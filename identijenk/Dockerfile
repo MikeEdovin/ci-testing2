@@ -1,8 +1,7 @@
-FROM jenkins:1.609.3
+FROM jenkins/jenkins:lts
 USER root
 
-RUN echo "deb https://download.docker.com/linux/debian/dists/jessie/Release" \
-          > /etc/apt/sources.list.d/docker.list \
+RUN echo "https://download.docker.com/linux/debian/dists/jessie/Release" \
       && apt-key adv --keyserver keyserver.ubuntu.com \
           --recv-keys 58118E89F3A912897C070ADBF76221572C52609D \
       && apt-get update \
@@ -12,10 +11,13 @@ RUN echo "deb https://download.docker.com/linux/debian/dists/jessie/Release" \
       && rm -rf /var/lib/apt/lists/*
 RUN echo "jenkins ALL=NOPASSWD: ALL" >> /etc/sudoers
 
-RUN curl -L https://github.com/docker/compose/releases/download/1.4.1/\
+RUN curl -L https://github.com/docker/compose/tree/v2/pkg/compose/\
 docker-compose-`uname -s`-`uname -m` > /usr/local/bin/docker-compose; \
     chmod +x /usr/local/bin/docker-compose
 
 USER jenkins
-COPY plugins.txt /usr/share/jenkins/plugins.txt
-RUN /usr/local/bin/plugins.sh /usr/share/jenkins/plugins.txt
+#new way to install pluging instead of plugin.sh+plugin.txt
+RUN jenkins-plugin-cli --plugins scm-api:631.v9143df5b_e4a_a
+RUN jenkins-plugin-cli --plugins git-client:3.13.1
+RUN jenkins-plugin-cli --plugins git:4.14.3
+

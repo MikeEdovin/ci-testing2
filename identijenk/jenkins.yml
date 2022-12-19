@@ -1,4 +1,5 @@
 identidock:
+  name:identidock-jenkins
   build: .
   expose:
     - "9090"
