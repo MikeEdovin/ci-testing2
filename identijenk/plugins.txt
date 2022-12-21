@@ -1,4 +1,0 @@
-scm-api:2.332.3
-git-client:3.13.1
-git:4.14.3
-greenballs:1.14
