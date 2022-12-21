@@ -1,9 +1,7 @@
 identidock:
-  build:
-    context: .
-    dockerfile: ./Dockerfile
+  build: .
   expose:
-    - 9090
+    - "9090"
   environment:
     ENV: PROD
   links:
