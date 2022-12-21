@@ -1,5 +1,3 @@
-services:
-  
   identidock:
     build:
       context: .
