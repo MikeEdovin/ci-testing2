@@ -18,4 +18,4 @@ services:
     image: amouat/dnmonster
 
   redis:
-    image: redis
+    image: redis/7.0
