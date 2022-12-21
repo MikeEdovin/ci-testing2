@@ -1,5 +1,5 @@
 identidock:
-  name:identidock-jenkins
+  name: identidock-jenkins
   build: .
   expose:
     - "9090"

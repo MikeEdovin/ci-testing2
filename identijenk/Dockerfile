@@ -8,12 +8,10 @@ RUN echo "https://download.docker.com/linux/debian/dists/jessie/Release" \
       && apt-get install -y apt-transport-https \
       && apt-get install -y sudo \
       && apt-get install -y docker.io \
+      && apt-get install -y docker-compose  \
       && rm -rf /var/lib/apt/lists/*
 RUN echo "jenkins ALL=NOPASSWD: ALL" >> /etc/sudoers
 
-RUN curl -L https://github.com/docker/compose/releases/tag/v2.14.1/ \
-docker-compose-`uname -s`-`uname -m` > /usr/local/bin/docker-compose; \
-    chmod +x /usr/local/bin/docker-compose
 
 USER jenkins
 #new way to install pluging instead of plugin.sh+plugin.txt
