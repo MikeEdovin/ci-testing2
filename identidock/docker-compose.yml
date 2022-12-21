@@ -11,8 +11,8 @@ services:
     volumes:
       - ./app:/app
     links:
-      - dnmonster
-      - redis
+      - "dnmonster"
+      - "redis"
 
   dnmonster:
     image: amouat/dnmonster
