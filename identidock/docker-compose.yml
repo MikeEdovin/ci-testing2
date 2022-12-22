@@ -15,7 +15,7 @@ services:
       - "redis"
 
   dnmonster:
-    image: amouat/dnmonster/latest
+    image: amouat/dnmonster
 
   redis:
-    image: redis/7.0
+    image: redis
